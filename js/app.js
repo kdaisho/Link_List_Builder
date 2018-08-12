@@ -5,67 +5,62 @@ var linkListApp = angular.module('linkListApp', []);
 linkListApp.controller('LinkListController', function LinkListController($scope) {
     $scope.forms = [
         {
-            label: {
-                name: 'Link',
-                title: 'Title',
-                url: 'URL',
-                output: 'Output'
-            },
-            title: '',
-            url: ''
+            title: 'a',
+            url: 'b'
+        },
+        {
+            title: 'c',
+            url: 'd'
         }
     ];
 
     $scope.textarea = '';
 
     $scope.encode = function() {
-        var obj = {};
-        for (let i = 0; i < $scope.forms.length; i++) {
-            console.log($scope.forms[i].title);
-            obj.t = $scope.forms[i].title;
-            obj.u = $scope.forms[i].url;
-            console.log(obj);
-        }
-        obj = JSON.stringify(obj);
-        console.log(obj);
-        var encoded = btoa(obj);
+        var newarr = $scope.convertArrToArr($scope.forms);
+        var encoded = btoa(newarr);
         $scope.textarea = encoded;
     }
 
     $scope.decode = function() {
-        console.log($scope.textarea);
+        var x = atob($scope.textarea);
+        $scope.textarea = $scope.buildObj(x);
+    }
 
-        const text = atob($scope.textarea);
-        console.log(text);
-        var u = JSON.stringify(text);
-        console.log(u);
+    $scope.convertArrToArr = function(a) {
+        var arr = [];
+        arr[0] = [];
+        arr[1] = [];
+        var newa = [];
+        for (var i = 0; i < a.length; i++) {
+            for (var prop in a[i]) {
+                arr[i].push(a[i][prop]);
+            }
+        }
+        return arr;
+    }
+
+    $scope.buildObj = function(str) {
+        var arr = [];
+        var darr = [];
+        str = str.replace(/,object:\d+/g, '');
+        arr = str.split(',');
+
+        darr = $scope.matrix(arr, 2);
+
+        console.log('RESULT ' + darr);
+        return darr;
+    }
+
+    $scope.matrix = function(arr, len) {
+        var matrix = [], i, k;
+        for (i = 0, k = -1; i < arr.length; i++) {
+            if (i % len === 0) {
+                k++;
+                matrix[k] = [];
+            }
+            matrix[k].push(arr[i]);
+        }
+        return matrix;
     }
 });
-
-// var textarea = document.getElementById('textArea');
-// var encodeBtn = document.getElementById('encode');
-// var decodeBtn = document.getElementById('decode');
-// var title = document.getElementById('title');
-// var url = document.getElementById('url');
-// var obj = {};
-
-// encodeBtn.addEventListener('click', function() {
-//     obj.a = title.value;
-//     console.log(obj);
-//     obj = JSON.stringify(obj);
-//     console.log(obj);
-//     var b = btoa(obj);
-
-//     // console.log(b);
-//     textarea.innerHTML = b;
-// });
-
-// decodeBtn.addEventListener('click', function() {
-//     var k = textarea.value;
-//     console.log('encoded: ' + k);
-//     var b = atob(k);
-//     b = JSON.stringify(b);
-//     alert(b);
-//     console.log('decoded2: ' + b.a);
-//     textarea.innerHTML = b;
-// });
