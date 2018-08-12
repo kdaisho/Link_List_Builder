@@ -11,6 +11,10 @@ linkListApp.controller('LinkListController', function LinkListController($scope)
         {
             title: 'c',
             url: 'd'
+        },
+        {
+            title: 'e',
+            url: 'f'
         }
     ];
 
@@ -32,10 +36,11 @@ linkListApp.controller('LinkListController', function LinkListController($scope)
 
     $scope.convertArrToArr = function(a) {
         var arr = [];
-        arr[0] = [];
-        arr[1] = [];
-        var newa = [];
+        // arr[0] = [];
+        // arr[1] = [];
+
         for (var i = 0; i < a.length; i++) {
+            arr[i] = [];
             for (var prop in a[i]) {
                 arr[i].push(a[i][prop]);
             }
@@ -68,16 +73,13 @@ linkListApp.controller('LinkListController', function LinkListController($scope)
     }
 
     $scope.build = function(arr, obj) {
-        // obj[0]['title'] = arr[0][0];
-        // obj[0]['url'] = arr[0][1];
-        // obj[1]['title'] = arr[1][0];
-        // obj[1]['url'] = arr[1][1];
-        var newarr = ['title','url'];
+        var propList = Object.getOwnPropertyNames(obj[0]);
         for (var i = 0; i < arr.length; i++) {
             for (var k = 0; k < arr[i].length; k++) {
-                var c = newarr[k]
-                obj[i][c] = arr[i][k];
+                var prop = propList[k]
+                obj[i][prop] = arr[i][k];
             }
         }
+        alert('done');
     }
 });
