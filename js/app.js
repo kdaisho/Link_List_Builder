@@ -24,7 +24,10 @@ linkListApp.controller('LinkListController', function LinkListController($scope)
 
     $scope.decode = function() {
         var x = atob($scope.textarea);
-        $scope.textarea = $scope.buildObj(x);
+        // $scope.textarea = $scope.buildObj(x);
+        var y = $scope.buildObj(x);
+        $scope.build(y, $scope.forms);
+        console.log($scope.forms);
     }
 
     $scope.convertArrToArr = function(a) {
@@ -62,5 +65,19 @@ linkListApp.controller('LinkListController', function LinkListController($scope)
             matrix[k].push(arr[i]);
         }
         return matrix;
+    }
+
+    $scope.build = function(arr, obj) {
+        // obj[0]['title'] = arr[0][0];
+        // obj[0]['url'] = arr[0][1];
+        // obj[1]['title'] = arr[1][0];
+        // obj[1]['url'] = arr[1][1];
+        var newarr = ['title','url'];
+        for (var i = 0; i < arr.length; i++) {
+            for (var k = 0; k < arr[i].length; k++) {
+                var c = newarr[k]
+                obj[i][c] = arr[i][k];
+            }
+        }
     }
 });
