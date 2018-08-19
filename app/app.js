@@ -1,20 +1,21 @@
 'use strict';
 
 var linkListApp = angular.module('linkListApp', []);
+var data;
 
 linkListApp.controller('LinkListController', function LinkListController($scope) {
     $scope.forms = [
         {
-            title: 'a',
-            url: 'b'
+            title: '',
+            url: ''
         },
         {
-            title: 'c',
-            url: 'd'
+            title: '',
+            url: ''
         },
         {
-            title: 'e',
-            url: 'f'
+            title: '',
+            url: ''
         }
     ];
 
