@@ -13,15 +13,17 @@
 <body>
 
     <div class="columns">
+        <div class="nav">
+            <a href="/app/index.html#!/encode">encode</a>
+            <a href="/app/index.html#!/decode">decode</a>
+        </div>
         <section class="column section">
-            <form-list></form-list>
-        </section>
-        <section class="column section">
-            <link-list></link-list>
+            <div ng-view></div>
         </section>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>
     <script src="app.module.js"></script>
     <script src="form-list/form-list.module.js"></script>
     <script src="form-list/form-list.component.js"></script>

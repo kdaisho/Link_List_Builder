@@ -2,11 +2,10 @@
 
 angular
     .module('linkList')
-    .component('linkList', {
-        templateUrl: 'link-list/link-list.template.html',
-        controller: function LinkListController($http) {
+    .controller('LinkListController', ['$http',
+        function($http) {
             var self = this;
-            $http.get('data/data.json').then(function(response) {
+            $http.get('data/data.json').then(function (response) {
                 self.forms = response.data;
             });
 
@@ -25,7 +24,8 @@ angular
             }
 
             this.createMatrix = function (arr, len) {
-                var matrix = [], i, k;
+                var matrix = [],
+                    i, k;
                 for (i = 0, k = -1; i < arr.length; i++) {
                     if (i % len === 0) {
                         k++;
@@ -44,11 +44,7 @@ angular
                         obj[i][prop] = arr[i][k];
                     }
                 }
-                console.log('forms obj1: ' + self.forms[0]['title']);
                 self.forms = obj;
-                console.log('done ' + obj[0]['title']);
-                console.log('forms obj2: ' + self.forms[0]['title']);
             }
         }
-
-    });
+    ]);
