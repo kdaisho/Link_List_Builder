@@ -11,13 +11,21 @@
 </head>
 
 <body>
-
+    <div class="navbar-item">
+        <a class="app-name is-size-4" href="/app/#!/home" title="home">linkList</a>
+    </div>
+    <div class="tabs is-medium is-centered">
+        <ul ng-init="selectedTab = 'encode'">
+            <li ng-class="{'is-active':selectedTab === 'encode'}" ng-click="selectedTab = 'encode'">
+                <a href="/app/#!/encode" title="Encode links to base-64">Encode</a>
+            </li>
+            <li ng-class="{'is-active':selectedTab === 'decode'}" ng-click="selectedTab = 'decode'">
+                <a href="/app/#!/decode" title="Decode to links">Decode</a>
+            </li>
+        </ul>
+    </div>
     <div class="columns">
-        <div class="nav">
-            <a href="/app/index.html#!/encode">encode</a>
-            <a href="/app/index.html#!/decode">decode</a>
-        </div>
-        <section class="column section">
+        <section class="">
             <div ng-view></div>
         </section>
     </div>

@@ -1,34 +1,41 @@
-<form ng-controller="FormListController as ctrl">
-    <div ng-repeat="form in ctrl.forms" class="m-t-5">
-        <h2 class="is-6">{{$index + 1}}</h2>
-        <div class="field m-t-2">
-            <label for="label">{{form.label.title}}</label>
-            <div class="control">
-                <input type="text" class="input" ng-model="form.title" placeholder="Title">
+<div class="columns">
+    <div class="column" ng-controller="FormListController as ctrl">
+        <div ng-repeat="form in ctrl.forms" class="m-t-5">
+            <h2 class="is-6">{{$index + 1}}</h2>
+            <div class="field m-t-2">
+                <label for="label">title</label>
+                <div class="control">
+                    <input type="text" class="input" ng-model="form.title" placeholder="Title">
+                </div>
+            </div>
+            <div class="field">
+                <label for="label">URL</label>
+                <div class="control">
+                    <input type="text" class="input" ng-model="form.url" placeholder="URL">
+                </div>
             </div>
         </div>
-        <div class="field">
-            <label for="label">{{form.label.url}}</label>
-            <div class="control">
-                <input type="text" class="input" ng-model="form.url" placeholder="URL">
+        <div class="m-t-5">
+            <div class="field">
+                <label for="label">Output</label>
+                <div class="control">
+                    <textarea id="textarea" class="textarea" ng-model="textarea" name="textarea" cols="30" rows="6" readonly></textarea>
+                </div>
             </div>
+            <button class="button is-primary" ng-click="ctrl.encode()">Encode</button>
+        </div>
+        Live Result:
+        <div ng-repeat="form in ctrl.forms">
+            <h3>{{form.title}}</h3>
+            <a ng-href="{{form.url}}" target="_blank">{{form.url}}</a>
         </div>
     </div>
-    <div class="m-t-5">
-        <div class="field">
-            <label for="label">Output</label>
-            <div class="control">
-                <textarea id="textarea" class="textarea" ng-model="textarea" name="textarea" cols="30" rows="6" readonly></textarea>
-            </div>
-        </div>
-        <button class="button is-primary" ng-click="ctrl.encode()">Encode</button>
-    </div>
-</form>
 
-<div>
-    Live Result:
-    <div ng-repeat="form in $ctrl.forms">
-        <h3>{{form.title}}</h3>
-        <a ng-href="{{form.url}}" target="_blank">{{form.url}}</a>
+    <div class="column">
+        Live Result:
+        <div ng-repeat="form in ctrl.forms">
+            <h3>{{form.title}}</h3>
+            <a ng-href="{{form.url}}" target="_blank">{{form.url}}</a>
+        </div>
     </div>
 </div>
