@@ -1,42 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="linkListApp">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Link List Builder</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <title>List App</title>
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.min.css">
+    <!-- <link rel="stylesheet" href="node_modules/angular-material/angular-material.css"> -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+<body ng-app="listApp" ng-cloak>
 
-<body>
-    <div class="navbar-item">
-        <a class="app-name is-size-4" href="/app/#!/home" title="home">linkList</a>
-    </div>
-    <div class="tabs is-medium is-centered">
-        <ul ng-init="selectedTab = 'encode'">
-            <li ng-class="{'is-active':selectedTab === 'encode'}" ng-click="selectedTab = 'encode'">
-                <a href="/app/#!/encode" title="Encode links to base-64">Encode</a>
-            </li>
-            <li ng-class="{'is-active':selectedTab === 'decode'}" ng-click="selectedTab = 'decode'">
-                <a href="/app/#!/decode" title="Decode to links">Decode</a>
-            </li>
-        </ul>
-    </div>
-    <div class="columns">
-        <section class="">
-            <div ng-view></div>
-        </section>
-    </div>
+    <ui-view></ui-view>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-route.min.js"></script>
-    <script src="app.module.js"></script>
-    <script src="form-list/form-list.module.js"></script>
-    <script src="form-list/form-list.component.js"></script>
-    <script src="link-list/link-list.module.js"></script>
-    <script src="link-list/link-list.component.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="app.js"></script>
+    <script src="components/list.controller.js"></script>
+    <script src="components/list.factory.js"></script>
+    <script src="components/create/list.create.controller.js"></script>
+    <script src="components/edit/list.edit.controller.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 </body>
-
 </html>

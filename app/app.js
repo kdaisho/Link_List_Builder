@@ -1,17 +1,17 @@
 'use strict';
 
 angular
-    .module('listApp', ['ui.router'])
-    .config(function($mdThemingProvider, $stateProvider, $locationProvider) {
+    .module('listApp', ['ngMaterial', 'ui.router'])
+    .config(function ($mdThemingProvider, $stateProvider, $locationProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('blue')
+            .accentPalette('yellow');
 
-        $mdThemingProvider.theme('blue')
-            .primaryPalette('bule')
-            .accentPalette('yellow')
-            .enableBrowserColor({
-                theme: 'default',
-                palette: 'primary',
-                hue: '400'
-            });
+        $mdThemingProvider.enableBrowserColor({
+            theme: 'default', // Default is 'default'
+            palette: 'primary', // Default is 'primary', any basic material palette and extended palettes are available
+            hue: '200' // Default is '800'
+        });
 
         $stateProvider
             .state('list', {
@@ -29,8 +29,8 @@ angular
                 templateUrl: 'components/edit/list.edit.template.html',
                 controller: 'editListCtrl as ctrl',
                 params: {
-                    list: null
+                    item: null
                 }
             });
-        $locationProvider.hasPrefix('');
+        $locationProvider.hashPrefix('');
     });
