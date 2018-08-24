@@ -22,7 +22,7 @@
                 self.categories = getCategories(self.list);
             });
 
-            $scope.$on('createList', function(event, item) {
+            $scope.$on('createItem', function(event, item) {
                 item.id = self.list.length + 1;
                 self.list.push(item);
                 showToast('Item saved!');
@@ -80,8 +80,8 @@
             function getCategories(list) {
                 var categories = [];
 
-                angular.forEach(list, function(item) {
-                    angular.forEach(item.categories, function(cateogry) {
+                angular.forEach(list, function(x) {
+                    angular.forEach(x.categories, function(category) {
                         categories.push(category);
                     });
                 });

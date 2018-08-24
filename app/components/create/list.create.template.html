@@ -10,17 +10,14 @@
                 <input type="text" id="title" ng-model="item.title" md-autofocus>
             </md-input-container>
             <md-input-container>
-                <label for="price">Price</label>
-                <input type="text" id="price" ng-model="item.price">
+                <label for="url">URL</label>
+                <input type="text" id="url" ng-model="item.url">
             </md-input-container>
-            <md-input-container>
-                <label for="description">Description</label>
-                <input type="text" id="description" ng-model="item.description">
+            <md-input-container ng-repeat="cat in [1, 2]">
+                <label for="categories">Categories</label>
+                <input type="text" id="categories" ng-model="item.categories[cat]">
             </md-input-container>
-            <md-input-container>
-                <label for="image">Image Link</label>
-                <input type="text" id="image" ng-model="item.image">
-            </md-input-container>
+
             <md-button class="md-primary" ng-click="ctrl.saveItem(item)">
                 Save
             </md-button>
@@ -28,6 +25,5 @@
                 Cancel
             </md-button>
         </form>
-        <pre>{{ item | json }}</pre>
     </md-content>
 </md-sidenav>

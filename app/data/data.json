@@ -2,16 +2,28 @@
     {
         "id": 1,
         "title": "I have it",
-        "url": "http://ihaveit.com"
+        "url": "http://ihaveit.com",
+        "categories": [
+            "cool",
+            "tv"
+        ]
     },
     {
         "id": 2,
         "title": "mountain good",
-        "url": "http://mountaingood.ca"
+        "url": "http://mountaingood.ca",
+        "categories": [
+            "joke",
+            "commedy"
+        ]
     },
     {
         "id": 3,
         "title": "london falls",
-        "url": "https://londonfalls.com"
+        "url": "https://londonfalls.com",
+        "categories": [
+            "movie",
+            "serious"
+        ]
     }
 ]

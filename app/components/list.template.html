@@ -38,45 +38,18 @@
 
 <md-content class="md-padding" layout="row" layout-wrap>
     <md-card class="item" ng-repeat="item in ctrl.list | filter: listFilter | filter: category" flex="30">
-        <img ng-src="{{ item.image }}" alt="stuff">
         <md-card-content>
 
             <div class="item-info" ng-show="!showContact" layout-padding>
-                <h2 class="md-title md-padding">{{ item.title }}</h2>
-                <h2>{{ item.posted | date:'longDate' }}</h2>
-                <h3>{{ item.price | currency }}</h3>
-                <p>{{ item.description }}</p>
-            </div>
-
-            <div class="item-contact" ng-show="showContact">
-                <p>
-                    <md-icon class="mdi mdi-account"></md-icon>{{ item.contact.name }}</p>
-                <p>
-                    <md-icon class="mdi mdi-phone"></md-icon>{{ item.contact.phone }}</p>
-                <p>
-                    <md-icon class="mdi mdi-email"></md-icon>{{ item.contact.email }}</p>
+                <h3>
+                    <a ng-href="{{ item.url}}">{{ item.title }}</a>
+                </h3>
+                <span ng-repeat="category in item.categories">{{ category }}</span>
             </div>
 
             <div layout="row">
-                <md-button ng-click="showContact = true" ng-show="!showContact">
-                    Contact
-                </md-button>
-                <md-button ng-click="showContact = false" ng-show="showContact">
-                    Details</md-button>
-                <md-button ng-click="showAdmin = true" ng-show="!showAdmin">
-                    Admin
-                </md-button>
-                <md-button ng-click="showAdmin = false" ng-show="showAdmin">
-                    Close
-                </md-button>
-            </div>
-
-            <div class="item-admin" ng-if="showAdmin">
-                <h3>Admin</h3>
-                <div layout="row">
-                    <md-button ng-click="ctrl.editItem(item)" class="md-primary">Edit</md-button>
-                    <md-button class="md-warn" ng-click="ctrl.deleteItem($event, item)">Delete</md-button>
-                </div>
+                <md-button ng-click="ctrl.editItem(item)" class="md-primary">Edit</md-button>
+                <md-button class="md-warn" ng-click="ctrl.deleteItem($event, item)">Delete</md-button>
             </div>
 
         </md-card-content>

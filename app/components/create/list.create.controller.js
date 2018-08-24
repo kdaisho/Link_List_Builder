@@ -11,7 +11,7 @@
             self.closeSidebar = closeSidebar;
             self.saveItem = saveItem;
 
-            $scope.$watch('self.sidenavOpen', function (sidenav) {
+            $scope.$watch('ctrl.sidenavOpen', function (sidenav) {
                 if (sidenav === false) {
                     $mdSidenav('left')
                         .close()
@@ -32,12 +32,6 @@
 
             function saveItem(item) {
                 if (item) {
-                    item.contact = {
-                        name: 'Daisho',
-                        phone: '(514) 775-9111',
-                        email: 'daishokomiyama@gmail.com'
-                    };
-
                     $scope.$emit('createItem', item);
                     self.sidenavOpen = false;
                 }

@@ -12,7 +12,7 @@
             self.saveEdit = saveEdit;
             self.list = $state.params.list;
 
-            $scope.$watch('self.sidenavOpen', function(sidenav) {
+            $scope.$watch('ctrl.sidenavOpen', function(sidenav) {
                 if (sidenav === false) {
                     $mdSidenav('left')
                         .close()
