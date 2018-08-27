@@ -10,7 +10,7 @@
 
             self.closeSidebar = closeSidebar;
             self.saveEdit = saveEdit;
-            self.list = $state.params.list;
+            self.item = $state.params.item;
 
             $scope.$watch('ctrl.sidenavOpen', function(sidenav) {
                 if (sidenav === false) {

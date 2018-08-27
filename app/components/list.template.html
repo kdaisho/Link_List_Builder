@@ -44,7 +44,8 @@
                 <h3>
                     <a ng-href="{{ item.url}}">{{ item.title }}</a>
                 </h3>
-                <span ng-repeat="category in item.categories">{{ category }}</span>
+                {{ item.categories }}
+                <!-- <span ng-repeat="category in item.categories">{{ category }}</span> -->
             </div>
 
             <div layout="row">
@@ -54,4 +55,25 @@
 
         </md-card-content>
     </md-card>
+
+</md-content>
+
+<md-content>
+    <md-input-container>
+        <md-button class="md-primary" ng-click="ctrl.encode()">Encode</md-button>
+    </md-input-container>
+
+    <md-input-container>
+        <label for="encoded">Encoded</label>
+        <textarea name="encoded" id="encoded" cols="30" rows="10"></textarea>
+    </md-input-container>
+
+    <md-input-container>
+        <md-button class="md-warn" ng-click="ctrl.decode()">Decode</md-button>
+    </md-input-container>
+
+    <md-input-container>
+        <label for="result">Decoded</label>
+        <textarea name="decoded" id="decoded" cols="30" rows="10"></textarea>
+    </md-input-container>
 </md-content>

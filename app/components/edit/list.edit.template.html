@@ -6,20 +6,16 @@
     <md-content layout-padding>
         <form>
             <md-input-container>
-                <label for="title">Title</label>
+                <label for="title">Title</label><br> - {{item.title}} -
                 <input type="text" id="title" ng-model="ctrl.item.title" md-autofocus>
             </md-input-container>
             <md-input-container>
-                <label for="price">Price</label>
-                <input type="text" id="price" ng-model="ctrl.item.price">
+                <label for="image">URL</label>
+                <input type="text" id="image" ng-model="ctrl.item.url">
             </md-input-container>
             <md-input-container>
-                <label for="description">Description</label>
-                <input type="text" id="description" ng-model="ctrl.item.description">
-            </md-input-container>
-            <md-input-container>
-                <label for="image">Image Link</label>
-                <input type="text" id="image" ng-model="ctrl.item.image">
+                <label for="cat">Categories</label>
+                <input type="text" id="cat" ng-model="ctrl.item.categories">
             </md-input-container>
             <md-button class="md-primary" ng-click="ctrl.saveEdit()">
                 Save Edit
