@@ -121,9 +121,7 @@
 
             function decode() {
                 var code = document.getElementById('decoded').value;
-                console.log('code1 ' + code);
                 var base64 = atob(code);
-                console.log('code2 ' + base64);
                 this.buildView(this.buildObj(base64), self.list);
             }
 
@@ -131,16 +129,8 @@
                 var arr = [];
                 var twoDimArray = [];
                 arr = str.replace(/,object:\d+/g, '').split(',');
-                // arr = str.replace(/,object:\d+/g, '');
-                console.log('before: ' + arr);
-                // arr = arr.replace(/(\d+)/g, '"$1"').split(',');
-                console.log('after: ' + arr);
-                console.log('isArray?: ' + Array.isArray(arr));
                 twoDimArray = this.createMatrix(arr, 4);
-                console.log('Two ARR ' + twoDimArray);
-                console.log(twoDimArray);
                 return twoDimArray;
-                // return twoDimArray = this.createMatrix(arr, 2);
             }
 
             function createMatrix(arr, len) {
@@ -153,24 +143,19 @@
                     }
                     matrix[k].push(arr[i]);
                 }
-                console.log('mat? ' + matrix);
-                console.log(matrix);
                 return matrix;
             }
 
             function buildView(arr, obj) {
                 var propList = Object.getOwnPropertyNames(obj[0]);
-                console.log(propList);
                 for (var i = 0; i < arr.length; i++) {
-                    for (var k = 0; k < arr[i].length; k++) {
-                        console.log(obj);
-                        var prop = propList[k]
+                    obj[i] = {};
+                    for (var k = 0; k < propList.length; k++) {
+                        var prop = propList[k];
                         obj[i][prop] = arr[i][k];
-                        console.log('end ' + obj);
                     }
                 }
-                self.forms = obj;
-                // self.list = obj;
+                self.list = obj;
             }
         });
 }());
