@@ -1,5 +1,5 @@
 <md-toolbar>
-    <div class="md-toolbar-tools">
+    <div class="md-toolbar-tools main-container">
         <p>
             <strong>List App</strong>
         </p>
@@ -25,7 +25,9 @@
     <md-input-container>
         <label>Category</label>
         <md-select ng-model="category">
-            <md-option ng-repeat="category in ctrl.categories" value="{{category}}">{{category}}</md-option>
+            <span ng-repeat="li in ctrl.list">
+                <md-option ng-if="key === 'categories'" ng-repeat="(key, value) in li" value="{{value}}">{{value}}</md-option>
+            </span>
         </md-select>
     </md-input-container>
 
@@ -36,42 +38,48 @@
 
 <ui-view></ui-view>
 
-<md-content class="md-padding" layout="row" layout-wrap>
-    <md-card class="item" ng-repeat="item in ctrl.list | filter: listFilter | filter: category">
-        <md-card-content>
+<md-content class="main-container">
+    <md-content class="md-padding" layout="row" layout-wrap>
+        <md-card class="item" ng-repeat="item in ctrl.list | filter: listFilter | filter: category">
+            <md-card-content>
 
-            <div class="item-info" ng-show="!showContact" layout-padding>
-                <h3>
-                    <a ng-href="{{item.url}}">{{item.title}}</a>
-                </h3>
-                <p>{{item.categories}}</p>
-            </div>
+                <div class="item-info" ng-show="!showContact" layout-padding>
+                    <h3>
+                        <a ng-href="{{item.url}}">{{item.title}}</a>
+                    </h3>
+                    <p>{{item.categories}}</p>
+                </div>
 
-            <div layout="row">
-                <md-button ng-click="ctrl.editItem(item)" class="md-primary">Edit</md-button>
-                <md-button class="md-warn" ng-click="ctrl.deleteItem($event, item)">Delete</md-button>
-            </div>
+                <div layout="row">
+                    <md-button ng-click="ctrl.editItem(item)" class="md-primary">Edit</md-button>
+                    <md-button class="md-warn" ng-click="ctrl.deleteItem($event, item)">Delete</md-button>
+                </div>
 
-        </md-card-content>
-    </md-card>
-</md-content>
+            </md-card-content>
+        </md-card>
+    </md-content>
 
-<md-content class="md-padding">
-    <md-input-container>
-        <md-button class="md-primary" ng-click="ctrl.encode(); focused = true">Encode</md-button>
-    </md-input-container>
+    <md-content class="md-padding" layout="column" layout-align="center">
+        <md-content layout="row" class="md-padding">
+            <md-input-container>
+                <md-button class="md-primary" ng-click="ctrl.encode(); focused = true">Encode</md-button>
+            </md-input-container>
 
-    <md-input-container ng-class="{'md-input-focused': focused}">
-        <label for="encoded">Encoded</label>
-        <textarea name="encoded" id="encoded" cols="60" rows="5"></textarea>
-    </md-input-container>
+            <md-input-container ng-class="{'md-input-focused': focused}">
+                <label for="encoded">Encoded</label>
+                <textarea name="encoded" id="encoded" cols="60" rows="5"></textarea>
+            </md-input-container>
+        </md-content>
 
-    <md-input-container>
-        <md-button class="md-warn" ng-click="ctrl.decode()">Decode</md-button>
-    </md-input-container>
+        <md-content layout="row" class="md-padding">
+            <md-input-container>
+                <md-button class="md-warn" ng-click="ctrl.decode()">Decode</md-button>
+            </md-input-container>
 
-    <md-input-container>
-        <label for="result">Decoded</label>
-        <textarea name="decoded" id="decoded" cols="60" rows="5"></textarea>
-    </md-input-container>
+            <md-input-container>
+                <label for="result">Decoded</label>
+                <textarea name="decoded" id="decoded" cols="60" rows="5"></textarea>
+            </md-input-container>
+        </md-content>
+    </md-content>
 </md-content>
