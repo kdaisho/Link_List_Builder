@@ -42,10 +42,9 @@
 
             <div class="item-info" ng-show="!showContact" layout-padding>
                 <h3>
-                    <a ng-href="{{ item.url}}">{{ item.title }}</a>
+                    <a ng-href="{{item.url}}">{{item.title}}</a>
                 </h3>
-                {{ item.categories }}
-                <!-- <span ng-repeat="category in item.categories">{{ category }}</span> -->
+                <p>{{item.categories}}</p>
             </div>
 
             <div layout="row">
@@ -55,7 +54,6 @@
 
         </md-card-content>
     </md-card>
-
 </md-content>
 
 <md-content>

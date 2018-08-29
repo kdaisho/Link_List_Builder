@@ -84,11 +84,9 @@
             function getCategories(list) {
                 var categories = [];
 
-                angular.forEach(list, function(x) {
-                    angular.forEach(x.categories, function(category) {
-                        categories.push(category);
-                    });
-                });
+                for (var i = 0; i < list.length; i++) {
+                    categories.push(list[i].categories);
+                }
 
                 return _.uniq(categories);
             }

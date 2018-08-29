@@ -13,6 +13,8 @@ angular
             hue: '200' // Default is '800'
         });
 
+        //URL will be localhost:5500/app/#/list
+
         $stateProvider
             .state('list', {
                 url: '/list',

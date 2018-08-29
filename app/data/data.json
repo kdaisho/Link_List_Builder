@@ -1,38 +1,8 @@
 [
     {
-        "title": "",
-        "url": "linkOne",
-        "categories": "first genre",
+        "title": "Example",
+        "url": "http://example.com",
+        "categories": "example categories",
         "id": 1
-    },
-    {
-        "title": "SecondTitle",
-        "url": "linkTwo",
-        "categories": "second genre",
-        "id": 2
-    },
-    {
-        "title": "SecondTitle",
-        "url": "linkTwo",
-        "categories": "second genre",
-        "id": 3
-    },
-    {
-        "title": "SecondTitle",
-        "url": "linkTwo",
-        "categories": "second genre",
-        "id": 4
-    },
-    {
-        "title": "SecondTitle",
-        "url": "linkTwo",
-        "categories": "second genre",
-        "id": 5
-    },
-    {
-        "title": "SecondTitle",
-        "url": "linkTwo",
-        "categories": "second genre",
-        "id": 6
     }
 ]
