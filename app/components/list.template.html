@@ -25,7 +25,7 @@
     <md-input-container>
         <label>Category</label>
         <md-select ng-model="category">
-            <md-option ng-repeat="category in ctrl.categories" value="{{ category }}">{{category}}</md-option>
+            <md-option ng-repeat="category in ctrl.categories" value="{{category}}">{{category}}</md-option>
         </md-select>
     </md-input-container>
 
@@ -37,7 +37,7 @@
 <ui-view></ui-view>
 
 <md-content class="md-padding" layout="row" layout-wrap>
-    <md-card class="item" ng-repeat="item in ctrl.list | filter: listFilter | filter: category" flex="30">
+    <md-card class="item" ng-repeat="item in ctrl.list | filter: listFilter | filter: category">
         <md-card-content>
 
             <div class="item-info" ng-show="!showContact" layout-padding>
@@ -58,12 +58,12 @@
 
 <md-content>
     <md-input-container>
-        <md-button class="md-primary" ng-click="ctrl.encode()">Encode</md-button>
+        <md-button class="md-primary" ng-click="ctrl.encode(); focused = true">Encode</md-button>
     </md-input-container>
 
-    <md-input-container>
+    <md-input-container ng-class="{'md-input-focused': focused}">
         <label for="encoded">Encoded</label>
-        <textarea name="encoded" id="encoded" cols="30" rows="10"></textarea>
+        <textarea name="encoded" id="encoded" cols="60" rows="5"></textarea>
     </md-input-container>
 
     <md-input-container>
@@ -72,6 +72,6 @@
 
     <md-input-container>
         <label for="result">Decoded</label>
-        <textarea name="decoded" id="decoded" cols="30" rows="10"></textarea>
+        <textarea name="decoded" id="decoded" cols="60" rows="5"></textarea>
     </md-input-container>
 </md-content>

@@ -18,7 +18,10 @@
             self.saveEdit = saveEdit;
             self.encode = encode;
             self.convertArrToArr = convertArrToArr;
-
+            self.decode = decode;
+            self.buildObj = buildObj;
+            self.createMatrix = createMatrix;
+            self.buildView = buildView;
 
             listFactory.getList().then(function(res) {
                 self.list = res.data;
@@ -44,7 +47,6 @@
             }
 
             function editItem(item) {
-                console.log(item);
                 $state.go('list.edit', {
                     id: item.id,
                     item: item
@@ -65,10 +67,9 @@
                     .cancel('No')
                     .targetEvent(event);
                 $mdDialog.show(confirm).then(function() {
-                    var index = self.list.indexOf(item);
-                    self.list.splice(index, 1);
-                }, function() {
-
+                        var index = self.list.indexOf(item);
+                        self.list.splice(index, 1);
+                    }, function() {
                 });
             }
 
@@ -87,17 +88,13 @@
                 for (var i = 0; i < list.length; i++) {
                     categories.push(list[i].categories);
                 }
-
                 return _.uniq(categories);
             }
 
             function encode() {
-                console.log(self.list);
                 var newarr = this.convertArrToArr(self.list);
-                console.log(newarr);
                 var encoded = btoa(newarr);
                 document.getElementById('encoded').innerHTML = encoded;
-                // this.textarea = encoded;
             }
 
             function convertArrToArr(a) {
@@ -112,10 +109,6 @@
                 return arr;
             }
 
-            self.decode = decode;
-            self.buildObj = buildObj;
-            self.createMatrix = createMatrix;
-            self.buildView = buildView;
 
             function decode() {
                 var code = document.getElementById('decoded').value;
