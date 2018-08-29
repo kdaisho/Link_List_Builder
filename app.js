@@ -4,6 +4,7 @@ angular
     .module('listApp', ['ngMaterial', 'ui.router'])
     .config(function ($mdThemingProvider, $stateProvider, $locationProvider) {
         $mdThemingProvider.theme('default')
+            .dark()
             .primaryPalette('blue')
             .accentPalette('yellow');
 
