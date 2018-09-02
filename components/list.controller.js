@@ -38,6 +38,8 @@
                 showToast(msg);
             });
 
+            $scope.getDatetime = new Date();
+
             function openSidebar() {
                 $state.go('list.create');
             }

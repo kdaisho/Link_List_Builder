@@ -49,6 +49,7 @@ a {
 /* ===== Style ===== */
 body * {
 	font-family: 'Arial', sans-serif;
+	line-height: 1.5;
 }
 .ng-cloak {
     display: none;
@@ -57,6 +58,28 @@ body * {
 .color-primary {
 	color: @primary;
 }
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.offset-top {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.m-r-20 {
+	margin-right: 20px;
+}
+
 
 .clickable:hover {
 	cursor: pointer;
@@ -84,17 +107,14 @@ body * {
 
 .main-container {
 	margin: 0 auto;
-	width: 100%;
-	max-width: 1600px;
+	width: 95%;
+	max-width: 1200px;
 }
 
 .item-title {
 	text-decoration: underline;
 }
 
-label {
-	text-transform: uppercase;
-}
 .fas.is-large {
 	font-size: 1.2em;
 }
@@ -102,4 +122,46 @@ label {
 .footer {
 	background: #222;
 	color: #fff;
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #000;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -30;
+	transition: opacity .25s;
+	&.active {
+		opacity: .75;
+		z-index: 30;
+	}
+}
+
+.video-container {
+	display: none;
+	position: relative;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding-bottom: 56.25%;
+	height: 0;
+	width: 100%;
+	max-width: 780px;
+	z-index: 60;
+	&.active {
+		display: block;
+	}
+	iframe {
+		position: absolute;
+		top: 50%;
+		width: 400px;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
+	}
 }

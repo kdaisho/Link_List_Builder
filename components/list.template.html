@@ -1,7 +1,7 @@
 <md-toolbar>
     <div class="md-toolbar-tools main-container">
         <p>
-            <strong>List App</strong>
+            <strong>StasHash</strong>
         </p>
 
         <md-button ng-click="ctrl.openSidebar()">
@@ -16,12 +16,12 @@
 
 <div class="filters" layout="row" layout-align="center start" ng-show="showFilters">
     <md-input-container>
-        <label for="search">Enter Search Term</label>
+        <label for="search" class="uppercase">Enter Search Term</label>
         <input id="search" type="text" ng-model="listFilter">
     </md-input-container>
 
     <md-input-container>
-        <label>Category</label>
+        <label class="uppercase">Category</label>
         <md-select ng-model="category">
             <span ng-repeat="li in ctrl.list">
                 <md-option ng-if="key === 'categories'" ng-repeat="(key, value) in li" value="{{value}}">{{value}}</md-option>
@@ -36,81 +36,99 @@
 
 <ui-view></ui-view>
 
-<md-content class="main-container">
-    <md-content class="md-padding" layout="row" layout-wrap>
-        <md-card class="item" ng-repeat="item in ctrl.list | filter: listFilter | filter: category">
-            <md-card-content class="md-primary">
+<md-content class="md-padding__ main-container">
+    <h1 class="md-headline color-primary md-padding">Hi, I'm StasHash.</h1>
+    <p class="color-primary md-padding md-subhead offset-top">I help you stash list of web pages safely. When you need your list, just paste your encryption key in DECODE field, then
+        click DECODE.</p>
+    <h2 class="md-headline color-primary md-padding">What makes me unique?</h2>
+    <ul class="color-primary md-padding offset-top">
+        <li>You don't need to create account</li>
+        <li>You are the only one who keeps the encription key</li>
+    </ul>
+    <p class="md-headline color-primary md-padding">How to use?</p>
+    <p class="uppercase color-primary clickable md-padding offset-top" ng-click="showVideo = !showVideo">
+        <i class="fas fa-video"></i> See video</p>
+</md-content>
 
-                <div class="item-info" ng-show="!showContact" layout-padding>
-                    <h3>
-                        <a ng-href="{{item.url}}" class="item-title md-primary" target="_blank"><i class="fas fa-link"></i> {{item.title}}</a>
-                    </h3>
-                    <p class="md-primary">{{item.categories}}</p>
-                </div>
+<md-content class="md-padding__ main-container" layout="row" layout-wrap>
+    <md-card class="item" ng-repeat="item in ctrl.list | filter: listFilter | filter: category">
+        <md-card-content class="md-primary">
 
-                <div layout="row">
-                    <md-button ng-click="ctrl.editItem(item)" class="md-primary">
-                        <i class="fas fa-edit is-large"></i>
-                    </md-button>
-                    <md-button ng-click="ctrl.deleteItem($event, item)" class="md-warn">
-                        <i class="fas fa-trash-alt is-large"></i>
-                    </md-button>
-                </div>
+            <div class="item-info" ng-show="!showContact" layout-padding>
+                <h3>
+                    <a ng-href="{{item.url}}" class="item-title md-primary" target="_blank">
+                        <i class="fas fa-link"></i> {{item.title}}</a>
+                </h3>
+                <p class="md-primary">{{item.categories}}</p>
+            </div>
 
-            </md-card-content>
-        </md-card>
-    </md-content>
-
-    <md-content class="md-padding" layout-gt-sm="row" layout-align="center">
-        <md-content layout="column" class="md-padding">
-            <md-input-container>
-                <md-button class="md-primary md-raised" ng-click="ctrl.encode(); focused = true">
-                    <i class="fas fa-key"></i> Encode </md-button>
-                <md-button class="clipboard color-primary md-button" title="copy to clipboard" data-clipboard-target="#encoded">
-                    <i class="fas fa-copy is-large"></i>
+            <div layout="row">
+                <md-button ng-click="ctrl.editItem(item)" class="md-primary">
+                    <i class="fas fa-edit is-large"></i>
                 </md-button>
-            </md-input-container>
+                <md-button ng-click="ctrl.deleteItem($event, item)" class="md-warn">
+                    <i class="fas fa-trash-alt is-large"></i>
+                </md-button>
+            </div>
+        </md-card-content>
+    </md-card>
+</md-content>
 
-            <md-input-container ng-class="{'md-input-focused': focused}">
-                <label for="encoded">Get encryption key</label>
-                <textarea name="encoded" id="encoded" cols="60" rows="5"></textarea>
-            </md-input-container>
-        </md-content>
+<!-- Video modal -->
+<div class="modal" ng-class="{active: showVideo}" ng-click="showVideo = false"></div>
+<div class="video-container" ng-class="{active: showVideo}" ng-if="showVideo">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/6BGwvxHgmZA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 
-        <md-content layout="column" class="md-padding">
-            <md-input-container>
-                <md-button class="md-warn md-raised" ng-click="ctrl.decode()">
-                    <i class="fas fa-unlock"></i> Decode</md-button>
-            </md-input-container>
-
-            <md-input-container>
-                <label for="result">Enter encryption key</label>
-                <textarea name="decoded" id="decoded" cols="60" rows="5" ng-model="entered"></textarea>
-            </md-input-container>
-        </md-content>
-    </md-content>
-
-    <md-content class="md-padding" layout-gt-sm="column" layout-align="center">
-        <div>
-            <h2 class="color-primary" style="text-transform: uppercase; display: inline-block;">Sample collection:</h2>
-            <md-button class="clipboard color-primary md-button" title="copy to clipboard" data-clipboard-target="#sample">
+<md-content class="md-padding" layout-gt-sm="row" layout-align="center">
+    <md-content layout="column" class="md-padding">
+        <md-input-container>
+            <md-button class="md-primary md-raised" ng-click="ctrl.encode(); focused = true">
+                <i class="fas fa-key"></i> Encode</md-button>
+            <md-button class="clipboard color-primary md-button" title="copy to clipboard" data-clipboard-target="#encoded">
                 <i class="fas fa-copy is-large"></i>
             </md-button>
-            <p class="color-primary">Paste this in DECODE field!</p>
-        </div>
+        </md-input-container>
+
+        <md-input-container ng-class="{'md-input-focused': focused}">
+            <label class="uppercase" for="encoded">Get encryption key</label>
+            <textarea name="encoded" id="encoded" cols="60" rows="5"></textarea>
+        </md-input-container>
+    </md-content>
+
+    <md-content layout="column" class="md-padding">
         <md-input-container>
-            <textarea id="sample" cols="100" rows="5" readonly>
-                RmxhdCBUb3AsaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1hQ3o4NnFZNHVkayZpbmRleD04JnQ9MHMmbGlzdD1GTGlybHVuVVJoaFNBanU0X3pPVVU2MFEsRGFuY2UsMSxvYmplY3Q6MzEsR2VvcmdlIENhcmxpbixodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PW1VdmRYeGhMUGE4Jmxpc3Q9Rkxpcmx1blVSaGhTQWp1NF96T1VVNjBRJmluZGV4PTEzLENvbWVkeSwyLG9iamVjdDo0NyxHdW5zaG90cyxodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PVdqTUdMZmc1dWFVJmluZGV4PTE1Jmxpc3Q9Rkxpcmx1blVSaGhTQWp1NF96T1VVNjBRLFdlYXBvbnMsMyxvYmplY3Q6NjMsU29ydGluZyxodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PWtQUkEwVzFrRUNnJmluZGV4PTEzJnQ9MjQwcyZsaXN0PUZMaXJsdW5VUmhoU0FqdTRfek9VVTYwUSxQcm9ncmFtbWluZyw0LG9iamVjdDo3OSxQYXJhZGUsaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1jSkVuNXpPTjRGdyZpbmRleD0yNSZsaXN0PUZMaXJsdW5VUmhoU0FqdTRfek9VVTYwUSxDaGluYSw1LG9iamVjdDo5NSxDbG9zZSBRdW90ZXIgU2hvb3RpbmcsaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1sYUFybWdhTTNUbyZpbmRleD0zNiZsaXN0PUZMaXJsdW5VUmhoU0FqdTRfek9VVTYwUSxNaWxpdGFyeSw2LG9iamVjdDoxMTE=
-            </textarea>
+            <md-button class="md-warn md-raised" ng-click="ctrl.decode()">
+                <i class="fas fa-unlock"></i> Decode</md-button>
+        </md-input-container>
+
+        <md-input-container>
+            <label class="uppercase" for="result">Enter encryption key</label>
+            <textarea name="decoded" id="decoded" cols="60" rows="5" ng-model="entered"></textarea>
         </md-input-container>
     </md-content>
 </md-content>
 
+<md-content class="main-container md-padding__" layout-gt-sm="column" layout-align="center">
+    <div>
+        <h2 class="color-primary md-headline uppercase inline">Sample collection:</h2>
+        <md-button class="clipboard color-primary md-button offset-top" title="copy to clipboard" data-clipboard-target="#sample">
+            <i class="fas fa-copy is-large"></i>
+        </md-button>
+        <p class="color-primary offset-top">Grab encryption key below, paste in DECODE field</p>
+    </div>
+    <md-input-container>
+        <textarea id="sample" cols="100" rows="5" readonly>
+            RmxhdCBUb3AsaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1hQ3o4NnFZNHVkayZpbmRleD04JnQ9MHMmbGlzdD1GTGlybHVuVVJoaFNBanU0X3pPVVU2MFEsRGFuY2UsMSxvYmplY3Q6MzEsR2VvcmdlIENhcmxpbixodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PW1VdmRYeGhMUGE4Jmxpc3Q9Rkxpcmx1blVSaGhTQWp1NF96T1VVNjBRJmluZGV4PTEzLENvbWVkeSwyLG9iamVjdDo0NyxHdW5zaG90cyxodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PVdqTUdMZmc1dWFVJmluZGV4PTE1Jmxpc3Q9Rkxpcmx1blVSaGhTQWp1NF96T1VVNjBRLFdlYXBvbnMsMyxvYmplY3Q6NjMsU29ydGluZyxodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PWtQUkEwVzFrRUNnJmluZGV4PTEzJnQ9MjQwcyZsaXN0PUZMaXJsdW5VUmhoU0FqdTRfek9VVTYwUSxQcm9ncmFtbWluZyw0LG9iamVjdDo3OSxQYXJhZGUsaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1jSkVuNXpPTjRGdyZpbmRleD0yNSZsaXN0PUZMaXJsdW5VUmhoU0FqdTRfek9VVTYwUSxDaGluYSw1LG9iamVjdDo5NSxDbG9zZSBRdW90ZXIgU2hvb3RpbmcsaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1sYUFybWdhTTNUbyZpbmRleD0zNiZsaXN0PUZMaXJsdW5VUmhoU0FqdTRfek9VVTYwUSxNaWxpdGFyeSw2LG9iamVjdDoxMTE=
+        </textarea>
+    </md-input-container>
+</md-content>
 
 <md-content class="footer md-padding">
-    <div class="main-container">
-        <p>
-            <strong>List App</strong>
+    <div class="main-container" layout="row">
+        <p class="m-r-20">
+            <strong>StasHash</strong>
         </p>
+        <p class="text-center">&#169; Copyright {{getDatetime | date:'yyyy'}} All Rights Reserved.</p>
     </div>
 </md-content>
