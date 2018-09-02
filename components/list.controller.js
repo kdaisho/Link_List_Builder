@@ -25,7 +25,7 @@
 
             listFactory.getList().then(function(res) {
                 self.list = res.data;
-                self.categories = getCategories(self.list);
+                // self.categories = getCategories(self.list);
             });
 
             $scope.$on('createItem', function(event, item) {
@@ -84,14 +84,14 @@
                 );
             }
 
-            function getCategories(list) {
-                var categories = [];
+            // function getCategories(list) {
+            //     var categories = [];
 
-                for (var i = 0; i < list.length; i++) {
-                    categories.push(list[i].categories);
-                }
-                return _.uniq(categories);
-            }
+            //     for (var i = 0; i < list.length; i++) {
+            //         categories.push(list[i].categories);
+            //     }
+            //     return _.uniq(categories);
+            // }
 
             function encode() {
                 var newarr = this.convertArrToArr(self.list);
