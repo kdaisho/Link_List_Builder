@@ -99,15 +99,30 @@
 
             function convertArrToArr(a) {
                 var arr = [];
-
+                var swap;
                 for (var i = 0; i < a.length; i++) {
                     arr[i] = [];
                     for (var prop in a[i]) {
                         arr[i].push(a[i][prop]);
+                        if (String(arr[i][0]).indexOf('http') >= 0) {
+                            console.log('Wrong order: ' + arr[i][0]);
+                            swap = true;
+                        }
+                    }
+                    if (swap) {
+                        switchTitleAndURL(arr[i]);
+                        swap = false;
                     }
                 }
-                console.log(arr);
                 return arr;
+            }
+
+            function switchTitleAndURL(arr) {
+                var tempForUrl = arr[0];
+                var tempForTitle = arr[1];
+                arr[0] = tempForTitle;
+                arr[1] = tempForUrl;
+                console.log(arr);
             }
 
             function decode() {
