@@ -1,6 +1,6 @@
 // out: ../style.css
-@import "main";
-@import "helper";
+// @import "main";
+// @import "helper";
 
 /* ========== Reset Styles =========== */
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -42,13 +42,24 @@ a {
 	color: inherit;
 }
 
+/* ===== Variables ===== */
+@primary: rgb(33,150,243);
+/* ===== Variables End ===== */
+
 /* ===== Style ===== */
+body * {
+	font-family: 'Arial', sans-serif;
+}
 .ng-cloak {
     display: none;
 }
 
-button .material-icons {
-    vertical-align: top;
+.color-primary {
+	color: @primary;
+}
+
+.clickable:hover {
+	cursor: pointer;
 }
 
 .list.ng-enter,
@@ -69,4 +80,26 @@ button .material-icons {
 
 .list.ng-leave.ng-leave-active {
     opacity: 0;
+}
+
+.main-container {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1600px;
+}
+
+.item-title {
+	text-decoration: underline;
+}
+
+label {
+	text-transform: uppercase;
+}
+.fas.is-large {
+	font-size: 1.2em;
+}
+
+.footer {
+	background: #222;
+	color: #fff;
 }

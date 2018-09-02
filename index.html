@@ -7,6 +7,7 @@
     <title>List App</title>
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
     <link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-app="listApp" ng-cloak>
@@ -24,5 +25,17 @@
     <script src="components/edit/list.edit.controller.js"></script>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="node_modules/clipboard/dist/clipboard.min.js"></script>
+    <script>
+        const clipboard = new ClipboardJS('.clipboard');
+
+        clipboard.on('success', function(event) {
+            event.clearSelection();
+            event.trigger.textContent = 'Copied!';
+            window.setTimeout(function() {
+                event.trigger.innerHTML = '<i class="fas fa-copy is-large"></i>';
+            }, 2000);
+        });
+    </script>
 </body>
 </html>

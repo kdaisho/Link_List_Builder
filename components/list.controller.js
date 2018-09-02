@@ -106,9 +106,9 @@
                         arr[i].push(a[i][prop]);
                     }
                 }
+                console.log(arr);
                 return arr;
             }
-
 
             function decode() {
                 var code = document.getElementById('decoded').value;

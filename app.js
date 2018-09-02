@@ -4,17 +4,27 @@ angular
     .module('listApp', ['ngMaterial', 'ui.router'])
     .config(function ($mdThemingProvider, $stateProvider, $locationProvider) {
         $mdThemingProvider.theme('default')
-            .dark()
-            .primaryPalette('blue')
-            .accentPalette('yellow');
-
+            .primaryPalette('light-blue', {
+                'default': 'A700'
+            })
+            .warnPalette('red')
+            .accentPalette('green', {
+                'default': '600'
+            })
+            ;
         $mdThemingProvider.enableBrowserColor({
             theme: 'default', // Default is 'default'
             palette: 'primary', // Default is 'primary', any basic material palette and extended palettes are available
-            hue: '200' // Default is '800'
         });
 
-        //URL will be localhost:5500/app/#/list
+        // $mdIconProvider.fontSet('md', 'material-icons');
+
+        // $mdIconProvider
+        //     .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+        //     .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+        // });
+
+        //Entry URL: <domain>/#/list
 
         $stateProvider
             .state('list', {
