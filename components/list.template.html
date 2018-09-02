@@ -37,6 +37,12 @@
 <ui-view></ui-view>
 
 <md-content class="md-padding__ main-container">
+    <!-- Video modal -->
+    <div class="modal" ng-class="{active: showVideo}" ng-click="showVideo = false"></div>
+    <div class="video-container main-container" ng-class="{active: showVideo}" ng-if="showVideo">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/6BGwvxHgmZA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
     <h1 class="md-headline color-primary md-padding">Hi, I'm StasHash.</h1>
     <p class="color-primary md-padding md-subhead offset-top">I help you stash list of web pages safely. When you need your list, just paste your encryption key in DECODE field, then
         click DECODE.</p>
@@ -49,6 +55,7 @@
     <p class="uppercase color-primary clickable md-padding offset-top" ng-click="showVideo = !showVideo">
         <i class="fas fa-video"></i> See video</p>
 </md-content>
+
 
 <md-content class="md-padding__ main-container" layout="row" layout-wrap>
     <md-card class="item" ng-repeat="item in ctrl.list | filter: listFilter | filter: category">
@@ -74,11 +81,6 @@
     </md-card>
 </md-content>
 
-<!-- Video modal -->
-<div class="modal" ng-class="{active: showVideo}" ng-click="showVideo = false"></div>
-<div class="video-container" ng-class="{active: showVideo}" ng-if="showVideo">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/6BGwvxHgmZA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</div>
 
 <md-content class="md-padding" layout-gt-sm="row" layout-align="center">
     <md-content layout="column" class="md-padding">
