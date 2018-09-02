@@ -17,15 +17,7 @@ angular
             palette: 'primary', // Default is 'primary', any basic material palette and extended palettes are available
         });
 
-        // $mdIconProvider.fontSet('md', 'material-icons');
-
-        // $mdIconProvider
-        //     .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
-        //     .defaultIconSet('img/icons/sets/core-icons.svg', 24);
-        // });
-
         //Entry URL: <domain>/#/list
-
         $stateProvider
             .state('list', {
                 url: '/list',
